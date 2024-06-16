@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //* This is the best practice for making route
 Route::prefix('/api')->group(function () {
-    Route::resource('/posts', PostsController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update']);
+    Route::resource('/posts', PostsController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::get('/custom', [PostsController::class, 'customMethod']);
 });
 
