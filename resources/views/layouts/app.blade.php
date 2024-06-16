@@ -11,6 +11,14 @@
 
 <body>
     <section>
+        <div class="error-message">
+            @if(session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @endif
+        </div>
+
         @yield('content')
     </section>
 

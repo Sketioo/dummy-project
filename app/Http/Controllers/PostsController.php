@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest as PostRequest;
 
 class PostsController extends Controller
 {
@@ -35,22 +36,18 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         if (!isset($data)) {
             return redirect()->route('posts.create');
         }
 
-        $post = Post::create([
-            'title' => $data['title'],
-            'content' => $data['content'],
-        ]);
-        // dd($post);
+        $post = Post::create($data);
 
         return redirect()->route('posts.show', [
             'post' => $post->id
-        ]);
+        ])->with('status', 'Succesfully created!');
     }
 
     /**
