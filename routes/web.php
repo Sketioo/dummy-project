@@ -1,15 +1,14 @@
 <?php
 
 use App\Http\Controllers\PostsController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 //* This is the best practice for making route
-Route::prefix('/api')->group(function(){
-    Route::resource('/posts', PostsController::class)->only(['index', 'show', 'create', 'store']);
+Route::prefix('/api')->group(function () {
+    Route::resource('/posts', PostsController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update']);
     Route::get('/custom', [PostsController::class, 'customMethod']);
 });
+
 
 // Route::get('/', function(){
 //     return view('home.homepage');

@@ -67,7 +67,10 @@ class PostsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        return view('post.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -75,7 +78,13 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->save();
+        return redirect()->route('posts.show', [
+            'post' => $post->id
+        ]);
     }
 
     /**
