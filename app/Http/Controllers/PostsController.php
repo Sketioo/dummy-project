@@ -94,6 +94,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
+
+        session()->flash('status', 'Post deleted!');
+
         return redirect()->route('posts.index');
     }
 }

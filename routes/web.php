@@ -7,16 +7,14 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/api')->group(function () {
     Route::resource('/posts', PostsController::class)->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::get('/custom', [PostsController::class, 'customMethod']);
+    Route::get('/home', function () {
+        return view('home.homepage');
+    });
+
+    Route::get('/about', function () {
+        return view('home.about');
+    });
 });
-
-
-// Route::get('/', function(){
-//     return view('home.homepage');
-// });
-
-// Route::get('about', function() {
-//     return view('home.about');
-// });
 
 // Route::get('/', 'home.homepage')->name('home.index');
 // Route::get('/about', 'home.about')->name('home.about');
