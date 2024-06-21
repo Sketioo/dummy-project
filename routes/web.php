@@ -16,6 +16,10 @@ Route::prefix('/api')->group(function () {
     });
 });
 
+Route::get('/', function() {
+    return view('welcome');
+});
+
 // Route::get('/', 'home.homepage')->name('home.index');
 // Route::get('/about', 'home.about')->name('home.about');
 
